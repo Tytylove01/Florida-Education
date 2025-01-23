@@ -13,3 +13,4 @@ fl_education_data <- get_acs(
   survey = "acs5",  # 5-year ACS estimates
   geometry = TRUE  # Set to TRUE if you want spatial data
 )
+write_rds(fl_education_data, file = "data.rds")
