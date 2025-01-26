@@ -9,51 +9,64 @@ execute:
 ```{r}
 library(tidycensus)
 library(tidyverse)
-library(leaflet)
+library(plotly)
 library(sf)
 library(viridis)
 
-fl_education_data <- read_rds("data.rds")
+x<- read_rds("fl_data.rds")
 
 ```
 
-
 ```{r}
-fl_education_data$estimate <- as.numeric(fl_education_data$estimate)
+# Load your data
+x <- read_rds("fl_data.rds")
 
+# Convert the sf object to a data frame
+fl_education_df <- fl_education_wide %>%
+  st_as_sf() %>%
+  st_centroid() %>%  # Get the centroid of each polygon
+  st_coordinates() %>%  # Extract the coordinates
+  as.data.frame() %>%
+  cbind(fl_education_wide)  # Combine with the original data
 
-fl_education_data <- fl_education_data[!st_is_empty(fl_education_data$geometry), ]
-```
+# Create a color palette for the percentage of Bachelor's degrees
+pal <- colorNumeric(palette = viridis(100), domain = fl_education_df$pct_bachelors)
 
-```{r}
-# Create a color palette based on the estimate values
-pal <- colorNumeric(
-  palette = viridis(10),  # Use the viridis color scale
-  domain = fl_education_data$estimate  # Map to the estimate values
-)
-# Create the interactive map
-leaflet_map <- leaflet(fl_education_data) %>%
-  addTiles() %>%  # Add base map tiles
-  addPolygons(
-    fillColor = ~pal(estimate),  # Color polygons based on estimate
-    fillOpacity = 0.7,  # Set polygon fill opacity
-    color = "#444444",  # Border color
-    weight = 1,  # Border width
-    smoothFactor = 0.5,  # Smoothness of polygons
-    popup = ~paste(  # Add popup with details
-      "Census Tract: ", NAME, "<br>",
-      "Population with <9th Grade Education: ", estimate
-    )
+# Create the interactive Leaflet map
+leaflet_map <- leaflet(fl_education_df) %>%
+  addTiles() %>%  # Add default OpenStreetMap tiles (street view)
+  addProviderTiles(providers$Esri.WorldImagery, group = "Satellite View") %>%  # Add satellite view
+  addCircleMarkers(
+    lng = ~X,  # Longitude
+    lat = ~Y,  # Latitude
+    radius = 5,  # Marker size
+    color = ~pal(pct_bachelors),  # Color by percentage of Bachelor's degree
+    fillOpacity = 0.8,  # Marker opacity
+    popup = ~paste("Tract: ", NAME, "<br>Bachelor's Degree: ", round(pct_bachelors, 2), "%")  # Popup text
+  ) %>%
+  addLayersControl(
+    baseGroups = c("Street View", "Satellite View"),  # Layer control for switching views
+    options = layersControlOptions(collapsed = FALSE)
   ) %>%
   addLegend(
-    pal = pal,  # Use the color palette
-    values = ~estimate,  # Map to estimate values
-    title = "Population with <9th Grade Education",  # Legend title
-    position = "bottomright"  # Legend position
-  )
+    pal = pal,  # Color palette
+    values = ~pct_bachelors,  # Values for the legend
+    title = "Bachelor's Degree (%)",  # Legend title
+    position = "bottomright"
+  ) %>%
+  setView(lng = -81.5158, lat = 27.6648, zoom = 7)  # Set initial view to Florida
 
 # Display the map
 leaflet_map
+
+
 ```
+
+
+```{r}
+
+```
+
+
 
 
