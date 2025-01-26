@@ -12,22 +12,21 @@ library(tidyverse)
 library(plotly)
 library(sf)
 library(viridis)
+library(leaflet)
 
-x<- read_rds("fl_data.rds")
+x <- read_rds("fl_data.rds")
 
 ```
 
 ```{r}
-# Load your data
-x <- read_rds("fl_data.rds")
 
 # Convert the sf object to a data frame
-fl_education_df <- fl_education_wide %>%
+fl_education_df <- x %>%
   st_as_sf() %>%
   st_centroid() %>%  # Get the centroid of each polygon
   st_coordinates() %>%  # Extract the coordinates
   as.data.frame() %>%
-  cbind(fl_education_wide)  # Combine with the original data
+  cbind(x)  # Combine with the original data
 
 # Create a color palette for the percentage of Bachelor's degrees
 pal <- colorNumeric(palette = viridis(100), domain = fl_education_df$pct_bachelors)
@@ -62,11 +61,6 @@ leaflet_map
 
 ```
 
-
 ```{r}
 
 ```
-
-
-
-
