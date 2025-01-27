@@ -9,7 +9,7 @@ website:
         text: Home
       - href: about.qmd
         text: About
-      - href: tampa.qmd
+      - href: Tampa.qmd
         text: Tampa
       - href: Hillsborough.qmd
         text: Hillsborough  # Add the new page here
