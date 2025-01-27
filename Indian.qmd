@@ -1,0 +1,119 @@
+---
+title: "Indian Creek"
+execute:
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+# Load necessary libraries
+library(tidycensus)
+library(tidyverse)
+library(leaflet)
+library(sf)
+library(viridis)
+
+# Read the Florida education data
+x <- read_rds("fl_data.rds")
+
+# Filter for Indian Creek area and surrounding Miami-Dade tracts
+indian_creek_data <- x %>%
+  filter(str_detect(NAME, "Miami-Dade County")) %>%
+  # Create a bounding box around Indian Creek
+  st_crop(xmin = -80.135, xmax = -80.115,
+          ymin = 25.875, ymax = 25.895)
+
+# Verify spatial data structure
+if (!inherits(indian_creek_data, "sf")) {
+  stop("Data must be in SF format for mapping")
+}
+
+# Create an enhanced color palette
+pal <- colorNumeric(
+  palette = "viridis",
+  domain = indian_creek_data$pct_doctorate,
+  na.color = "gray"
+)
+
+# Create interactive map focused on Indian Creek
+leaflet_map <- leaflet(indian_creek_data) %>%
+  # Base layers
+  addTiles(group = "Street View") %>%
+  addProviderTiles(providers$Esri.WorldImagery, group = "Satellite View") %>%
+  addProviderTiles(providers$CartoDB.Positron, group = "Light Map") %>%
+  
+  # Add census tract polygons
+  addPolygons(
+    color = ~pal(pct_doctorate),
+    weight = 1,
+    opacity = 1,
+    fillOpacity = 0.7,
+    # Modified popup with only available information
+    popup = ~sprintf(
+      "<strong>Area:</strong> %s<br/>
+       <strong>Population:</strong> %s<br/>
+       <strong>Doctorate:</strong> %.2f%%",
+      NAME,
+      format(B01003_001, big.mark = ","),
+      pct_doctorate
+    ),
+    # Enhanced highlighting
+    highlightOptions = highlightOptions(
+      weight = 3,
+      color = "#FFFFFF",
+      fillOpacity = 0.9,
+      bringToFront = TRUE
+    )
+  ) %>%
+  
+  # Add a marker for Indian Creek Island
+  addMarkers(
+    lng = -80.1242,
+    lat = 25.8875,
+    popup = "Indian Creek Village"
+  ) %>%
+  
+  # Enhanced layer controls
+  addLayersControl(
+    baseGroups = c("Street View", "Satellite View", "Light Map"),
+    position = "topright",
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  
+  # Enhanced legend
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = ~pct_doctorate,
+    title = "Doctorate Degrees (%)",
+    opacity = 0.7,
+    labFormat = labelFormat(suffix = "%", digits = 1)
+  ) %>%
+  
+  # Set view specifically to Indian Creek
+  setView(
+    lng = -80.1242,
+    lat = 25.8875,
+    zoom = 15  # Higher zoom level for this smaller area
+  ) %>%
+  
+  # Add scale bar
+  addScaleBar(position = "bottomleft")
+
+# Optional: Add a mini-map for context
+leaflet_map <- leaflet_map %>%
+  addMiniMap(
+    tiles = providers$CartoDB.Positron,
+    toggleDisplay = TRUE,
+    position = "bottomleft"
+  )
+
+# Display the map
+leaflet_map
+
+
+
+```
+
+This map shows Indian Creek area of Miami on the East coast of Florida. This area has a lot more blue and yellow indicating that these areas have 3.0% and higher of people who have attained a bachelors degree or more advanced levels of education.  

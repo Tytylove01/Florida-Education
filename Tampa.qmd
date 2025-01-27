@@ -63,7 +63,7 @@ leaflet_map <- leaflet(tampa_data) %>%
     options = layersControlOptions(collapsed = FALSE)
   ) %>%
   addLegend(
-    position = "bottomright",     # Position of the legend
+    position = "bottomright",     # Position of the legendleaflet_map
     pal = pal,                    # Color palette
     values = ~pct_doctorate,      # Values for the legend
     title = "% Doctorate"         # Legend title
@@ -72,7 +72,9 @@ leaflet_map <- leaflet(tampa_data) %>%
 
 # Display the map
 leaflet_map
-
 ```
 
+ The map displays the percentage of residents with doctorate degrees across different neighborhoods in Tampa and surrounding areas. The legend indicates percentages ranging from 0-6%, with purple representing the lowest rates (0-1%) and yellow representing the highest rates (around 6%).
 
+Most of the mapped area shows deep purple coloring, indicating that the vast majority of neighborhoods have very low percentages of residents with doctorate degrees (0-1%). There are a few notable exceptions where small pockets show higher concentrations:
+A few scattered areas display green coloring (around 3-4%), particularly in the central part of Tampa and near the airport area. There are also one or two very small yellow spots showing the highest concentration of doctorate holders (5-6%).

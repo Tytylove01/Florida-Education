@@ -64,3 +64,13 @@ leaflet_map
 
 ```
 
+This map overlays doctorate degree attainment data on the greater Tampa Bay region, with specific focus on Hillsborough County. The visualization uses a color gradient from purple (0-1% doctorate holders) to yellow (6% doctorate holders), providing insight into the educational landscape of the area.
+Hillsborough County shows several notable patterns in its doctorate degree distribution:
+
+The majority of the county displays deep purple coloring, indicating that most neighborhoods have relatively low percentages (0-1%) of residents with doctorate degrees. This pattern is consistent across much of the suburban and rural areas of the county.
+However, there are several notable clusters where higher concentrations of doctorate degree holders reside:
+
+In the north Tampa area, particularly around the University of South Florida region, there are pockets of green and blue coloring, suggesting areas with 3-4% doctorate degree holders. This higher concentration likely reflects the presence of university faculty, researchers, and professionals associated with the academic institution.
+
+The south Tampa peninsula shows some variation, with a mix of purple and blue areas, indicating slightly higher concentrations of doctorate holders in certain neighborhoods, particularly in some of the more affluent areas.
+The eastern portions of Hillsborough County, extending toward Plant City and the rural areas, consistently show lower percentages, predominantly in the 0-1% range. This reflects the more rural, agricultural nature of these areas.

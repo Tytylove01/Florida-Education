@@ -7,12 +7,16 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: about.qmd
-        text: About
-      - href: Tampa.qmd
-        text: Tampa
       - href: Hillsborough.qmd
         text: Hillsborough  # Add the new page here
+      - href: Tampa.qmd
+        text: Tampa
+      - href: Indian.qmd
+        text: Indian Creek
+      - href: about.qmd
+        text: About
+
+
 
 format:
   html:
