@@ -1,0 +1,66 @@
+---
+title: "Hillsborough"
+execute:
+  echo: false
+  message: false
+  warning: false
+---
+
+
+```{r}
+library(tidycensus)
+library(tidyverse)
+library(sf)
+library(leaflet)
+library(viridis)
+
+x <- read_rds("fl_data.rds")
+
+# Filter data for Hillsborough County
+Hillsborough_data <- x %>%
+  filter(grepl("Hillsborough County", NAME))  # Filter rows where NAME contains "Hillsborough County"
+
+```
+
+
+
+```{r}
+# Define a color palette
+pal <- colorNumeric(
+  palette = "viridis",  # Use the "viridis" color scale
+  domain = Hillsborough_data$pct_doctorate  # Map to the pct_doctorate column
+)
+
+# Create the leaflet map
+leaflet_map <- leaflet(Hillsborough_data) %>%
+  addTiles() %>%  # Add base map tiles
+  addPolygons(
+    color = ~pal(pct_doctorate),  # Color polygons based on pct_doctorate
+    weight = 1,                   # Border thickness
+    opacity = 1,                  # Border opacity
+    fillOpacity = 0.7,            # Fill opacity
+    popup = ~paste(               # Popup text when clicking on a tract
+      "Tract: ", NAME, "<br>",
+      "Population: ", B01003_001, "<br>",
+      "% Doctorate: ", round(pct_doctorate, 2), "%"
+    ),
+    highlightOptions = highlightOptions(
+      weight = 2,                 # Highlight border thickness
+      color = "white",            # Highlight border color
+      fillOpacity = 0.9,          # Highlight fill opacity
+      bringToFront = TRUE         # Bring highlighted tract to front
+    )
+  ) %>%
+  addLegend(
+    position = "bottomright",     # Position of the legend
+    pal = pal,                    # Color palette
+    values = ~pct_doctorate,      # Values for the legend
+    title = "% Doctorate"         # Legend title
+  )
+
+# Display the map
+leaflet_map
+
+
+```
+
