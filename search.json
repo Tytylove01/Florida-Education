@@ -1,9 +1,58 @@
 [
   {
+    "objectID": "Tampa.html",
+    "href": "Tampa.html",
+    "title": "Tampa",
+    "section": "",
+    "text": "The map displays the percentage of residents with doctorate degrees across different neighborhoods in Tampa and surrounding areas. The legend indicates percentages ranging from 0-6%, with purple representing the lowest rates (0-1%) and yellow representing the highest rates (around 6%).\nMost of the mapped area shows deep purple coloring, indicating that the vast majority of neighborhoods have very low percentages of residents with doctorate degrees (0-1%). There are a few notable exceptions where small pockets show higher concentrations: A few scattered areas display green coloring (around 3-4%), particularly in the central part of Tampa and near the airport area. There are also one or two very small yellow spots showing the highest concentration of doctorate holders (5-6%)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Florida Education",
+    "section": "",
+    "text": "This map shows the percentage of people in Florida with bachelors degrees or higher in different parts of the state. coastal areas generally showing darker purple coloring, indicating lower rates of bachelor’s degree attainment (0-20%). This pattern is particularly shown along both the eastern and western coastlines. Central inland areas display lighter coloring, suggesting higher educational attainment rates (30-50%). You can see that major urban areas visable on the map (like around Tampa, St. Petersburg, and Fort. Lauderdale) showing a combination of education levels in some neighborhoods while adjacent neighborhoods have rather low attainment levels."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "My name is Tyaveon Levit. I am A third Year Transfer, it is my first year here at new college. I collected data of Bachelor Degree’s by percent from Florida counties as a whole and then continued to take a closer look at the Hillsborough county in particular and then into Tampa specifically being that is home for me.\nSome basic background information include The history of education dating back to ancient civilizations, where formal learning began in places like Mesopotamia, Egypt, and Greece. Early education focused on skills like writing, mathematics, and philosophy, often being reserved for elites. During the Middle Ages, religious institutions dominated education, with monasteries and universities like Oxford and Bologna emerging. The Renaissance and Enlightenment periods emphasized humanism, science, and critical thinking, broadening access to knowledge.\nThe modern education system evolved during the Industrial Revolution, with compulsory schooling becoming widespread in the 19th and 20th centuries. Today, education is a global priority, with primary, secondary, and higher education systems in place worldwide.\nTo earn a Bachelor’s degree, students typically complete 12 years of primary and secondary education, followed by 3-4 years of undergraduate study at a college or university. This involves choosing a major, completing general education requirements, and earning a set number of credits through coursework, exams, and projects. Many programs also include internships or research opportunities. A Bachelor’s degree equips graduates with specialized knowledge, critical thinking skills, and better career prospects, serving as a foundation for advanced studies or professional success."
+    "text": "My name is Tyaveon Levit. I am A third Year Transfer, it is my first year here at new collegeNew College Of Florida. I collected data of Bachelor Degree’s by percent from Florida counties as a whole and then continued to take a closer look at the Hillsborough county in particular and then into Tampa specifically being that is home for me. The repo for this project can be found here\nEmail Me\nHere you can find the Techne Course homepage\nSome basic background information include The history of education dating back to ancient civilizations, where formal learning began in places like Mesopotamia, Egypt, and Greece. Early education focused on skills like writing, mathematics, and philosophy, often being reserved for elites. During the Middle Ages, religious institutions dominated education, with monasteries and universities like Oxford and Bologna emerging. The Renaissance and Enlightenment periods emphasized humanism, science, and critical thinking, broadening access to knowledge.\nThe modern education system evolved during the Industrial Revolution, with compulsory schooling becoming widespread in the 19th and 20th centuries. Today, education is a global priority, with primary, secondary, and higher education systems in place worldwide.\nTo earn a Bachelor’s degree, students typically complete 12 years of primary and secondary education, followed by 3-4 years of undergraduate study at a college or university. This involves choosing a major, completing general education requirements, and earning a set number of credits through coursework, exams, and projects. Many programs also include internships or research opportunities. A Bachelor’s degree equips graduates with specialized knowledge, critical thinking skills, and better career prospects, serving as a foundation for advanced studies or professional success.\nThe data for this project came from the America Community survey."
+  },
+  {
+    "objectID": "about.html#purpose-and-scope",
+    "href": "about.html#purpose-and-scope",
+    "title": "About",
+    "section": "Purpose and Scope",
+    "text": "Purpose and Scope\nThe ACS aims to help communities, policymakers, and businesses make informed decisions by providing up-to-date statistics on topics such as: - Demographic characteristics (age, race, gender, education) - Economic indicators (income, employment, poverty) - Housing trends (homeownership, rent, housing costs) - Social factors (marital status, disability, transportation)"
+  },
+  {
+    "objectID": "about.html#methodology",
+    "href": "about.html#methodology",
+    "title": "About",
+    "section": "Methodology",
+    "text": "Methodology\nThe survey reaches approximately 3.5 million households each year, sampling a small percentage of the population. Data is collected through online forms, mail, phone calls, and in-person interviews. The ACS produces 1-year, 3-year, and 5-year estimates, with the 5-year estimates offering the most comprehensive data for smaller geographic areas."
+  },
+  {
+    "objectID": "about.html#impact",
+    "href": "about.html#impact",
+    "title": "About",
+    "section": "Impact",
+    "text": "Impact\nThe ACS is a critical tool for allocating federal funds, planning community services, and addressing social and economic challenges. Its data is widely used by governments, researchers, and businesses to understand trends and disparities across the United States.\nFor more information, visit the U.S. Census Bureau’s ACS website."
+  },
+  {
+    "objectID": "Hillsborough.html",
+    "href": "Hillsborough.html",
+    "title": "Hillsborough",
+    "section": "",
+    "text": "This map overlays doctorate degree attainment data on the greater Tampa Bay region, with specific focus on Hillsborough County. The visualization uses a color gradient from purple (0-1% doctorate holders) to yellow (6% doctorate holders), providing insight into the educational landscape of the area. Hillsborough County shows several notable patterns in its doctorate degree distribution:\nThe majority of the county displays deep purple coloring, indicating that most neighborhoods have relatively low percentages (0-1%) of residents with doctorate degrees. This pattern is consistent across much of the suburban and rural areas of the county. However, there are several notable clusters where higher concentrations of doctorate degree holders reside:\nIn the north Tampa area, particularly around the University of South Florida region, there are pockets of green and blue coloring, suggesting areas with 3-4% doctorate degree holders. This higher concentration likely reflects the presence of university faculty, researchers, and professionals associated with the academic institution.\nThe south Tampa peninsula shows some variation, with a mix of purple and blue areas, indicating slightly higher concentrations of doctorate holders in certain neighborhoods, particularly in some of the more affluent areas. The eastern portions of Hillsborough County, extending toward Plant City and the rural areas, consistently show lower percentages, predominantly in the 0-1% range. This reflects the more rural, agricultural nature of these areas."
+  },
+  {
+    "objectID": "Indian.html",
+    "href": "Indian.html",
+    "title": "Indian Creek",
+    "section": "",
+    "text": "This map shows Indian Creek area of Miami on the East coast of Florida. This area has a lot more blue and yellow indicating that these areas have 3.0% and higher of people who have attained a bachelors degree or more advanced levels of education."
   }
 ]
