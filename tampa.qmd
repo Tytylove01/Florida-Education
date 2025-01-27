@@ -7,31 +7,40 @@ execute:
 ---
 
 
-
 ```{r}
+# Load necessary libraries
 library(tidycensus)
 library(tidyverse)
 library(leaflet)
 library(sf)
 library(viridis)
 
+# Load your data
 x <- read_rds("fl_data.rds")
+```
+
+
+```{r}
 
 # Filter data for Hillsborough County (Tampa)
 tampa_data <- x %>%
   filter(grepl("Hillsborough County", NAME))  # Filter rows where NAME contains "Hillsborough County"
-```
 
-```{r}
-# Define a color palette
+# Ensure tampa_data is an sf object with geometry
+if (!inherits(tampa_data, "sf")) {
+  stop("tampa_data must be an sf object with geometry.")
+}
+
+# Define a color palette for the percentage of Doctorate degrees
 pal <- colorNumeric(
   palette = "viridis",  # Use the "viridis" color scale
   domain = tampa_data$pct_doctorate  # Map to the pct_doctorate column
 )
 
-# Create the leaflet map
+# Create the interactive Leaflet map
 leaflet_map <- leaflet(tampa_data) %>%
-  addTiles() %>%  # Add base map tiles
+  addTiles() %>%  # Add default OpenStreetMap tiles (street view)
+  addProviderTiles(providers$Esri.WorldImagery, group = "Satellite View") %>%  # Add satellite view
   addPolygons(
     color = ~pal(pct_doctorate),  # Color polygons based on pct_doctorate
     weight = 1,                   # Border thickness
@@ -49,15 +58,21 @@ leaflet_map <- leaflet(tampa_data) %>%
       bringToFront = TRUE         # Bring highlighted tract to front
     )
   ) %>%
+  addLayersControl(
+    baseGroups = c("Street View", "Satellite View"),  # Layer control for switching views
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
   addLegend(
     position = "bottomright",     # Position of the legend
     pal = pal,                    # Color palette
     values = ~pct_doctorate,      # Values for the legend
     title = "% Doctorate"         # Legend title
-  )
+  ) %>%
+  setView(lng = -82.4584, lat = 27.9506, zoom = 11)  # Set initial view to Tampa
 
 # Display the map
 leaflet_map
+
 ```
 
-The map shows a clear spatial pattern in the percentage of the population with a doctorate degree across the Tampa region. The areas with the highest percentage (4-6%) are concentrated in the central and northern parts of the city, while the southern and eastern regions have lower percentages (1-3%). This suggests socioeconomic disparities in educational attainment within the Tampa metropolitan area.
+
