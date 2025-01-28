@@ -116,4 +116,6 @@ leaflet_map
 
 ```
 
-This map shows Indian Creek area of Miami on the East coast of Florida. This area has a lot more blue and yellow indicating that these areas have 3.0% and higher of people who have attained a bachelors degree or more advanced levels of education.  
+This map shows Indian Creek area of Miami on the East coast of Florida. This area has a lot more blue and yellow indicating that these areas have 3.0% and higher of people who have attained a bachelors degree or more advanced levels of education. 
+
+The map focuses on a coastal area near Surfside, with major surrounding areas including Sunny Isles Beach to the north and Bal Harbour Village to the south. Florida State Road A1A is visible running through the region.
