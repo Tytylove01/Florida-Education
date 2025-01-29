@@ -74,6 +74,13 @@ leaflet_map <- leaflet(tampa_data) %>%
 leaflet_map
 ```
 
+
+```{r}
+knitr::include_graphics("C:/Users/123/Desktop/projects/class-22-25-website/west-tampa.jpg")
+    
+```
+
+
  The map displays the percentage of residents with doctorate degrees across different neighborhoods in Tampa and surrounding areas. The legend indicates percentages ranging from 0-6%, with purple representing the lowest rates (0-1%) and yellow representing the highest rates (around 6%).
 
 Most of the mapped area shows deep purple coloring, indicating that the vast majority of neighborhoods have very low percentages of residents with doctorate degrees (0-1%). There are a few notable exceptions where small pockets show higher concentrations:
